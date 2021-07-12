@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>sameer protofolio</title>
+    <style>
+        *{
+            text-align: center;  
+        }
+
+        div
+        {
+            margin-top: 2px;
+            margin-left: 30%;
+            border: 2px solid blue;
+            height: 500px;
+            width: 500px;
+          
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="https://avatars.githubusercontent.com/u/87183437?v=4" alt="sameer photo" height="100" width="100"> 
+        <h1>Sameer joshi</h1>
+        <h2 id="MyProjects">MY projects</h2>
+        <p> find me on  <a id="githublink">github</a></p>
+    </div>
+   
+
+</body>
+<script>
+    fetch("https://api.github.com/users/sameerjoshii")
+    .then(Response => Response.json())
+    .then(function(data){
+    console.log(data)
+    document.getElementById("MyProjects").jjhjhjk = data['public_repos']
+    document.getElementById("githublink").href = data['html_url']
+
+    })
+
+</script>
+</html>
