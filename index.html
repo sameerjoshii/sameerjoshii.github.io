@@ -27,8 +27,8 @@
     <div>
         <img src="https://avatars.githubusercontent.com/u/87183437?v=4" alt="sameer photo" height="100" width="100"> 
         <h1>Sameer joshi</h1>
-        <h2 id="MyProjects">MY projects</h2>
-        <p> find me on  <a id="githublink">github</a></p>
+       my total projects <p id="MyProjects">MY projects</p>
+        <p> find me on  <a id="githublink" target="blank">github</a></p>
     </div>
    
 
@@ -38,7 +38,7 @@
     .then(Response => Response.json())
     .then(function(data){
     console.log(data)
-    document.getElementById("MyProjects").jjhjhjk = data['public_repos']
+    document.getElementById("MyProjects").innerHTML =  data['public_repos']
     document.getElementById("githublink").href = data['html_url']
 
     })
