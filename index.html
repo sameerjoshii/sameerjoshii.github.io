@@ -27,7 +27,7 @@
     <div>
         <img src="https://avatars.githubusercontent.com/u/87183437?v=4" alt="sameer photo" height="100" width="100"> 
         <h1>Sameer joshi</h1>
-       my total projects <p id="MyProjects">MY projects</p>
+        <p id="MyProjects"><b>MY projects</b></p>
         <p> find me on  <a id="githublink" target="blank">github</a></p>
     </div>
    
@@ -38,10 +38,22 @@
     .then(Response => Response.json())
     .then(function(data){
     console.log(data)
-    document.getElementById("MyProjects").innerHTML =  data['public_repos']
+    // document.getElementById("MyProjects").innerHTML =  data['public_repos']
     document.getElementById("githublink").href = data['html_url']
 
     })
+
+    fetch("https://api.github.com/users/sameerjoshii/repos")
+.then(response => response.json())
+.then(function(data){
+data.forEach(element => {
+const repoEl = document.createElement('li')
+repoEl.innerHTML = `
+<span>${element.name}</span> Repository date:${element.updated_at}
+`
+document.getElementById('MyProjects').appendChild(repoEl)
+});
+})
 
 </script>
 </html>
