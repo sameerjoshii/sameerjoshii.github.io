@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>sameer protofolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         *{
             text-align: center;  
@@ -21,6 +22,45 @@
             width: 500px;
           
         }
+        img{
+            border-radius: 30px;
+            margin-top: 20px;
+        }
+
+        .fa {
+  /* padding: 10px 10px 10px; */
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  font-size: 20px;
+  width: 1px;
+  text-align: center;
+  text-decoration: dashed;
+  margin: 9px 2px;
+ 
+}
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+.fa-github {
+  background: #bb0000;
+  color: white;
+}
+*
+{
+    background-color: aliceblue;
+}
+
     </style>
 </head>
 <body>
@@ -28,32 +68,53 @@
         <img src="https://avatars.githubusercontent.com/u/87183437?v=4" alt="sameer photo" height="100" width="100"> 
         <h1>Sameer joshi</h1>
         <p id="MyProjects"><b>MY projects</b></p>
-        <p> find me on  <a id="githublink" target="blank">github</a></p>
+        <!-- <p> find me on  <a id="githublink" target="blank">github</a></p> -->
+        <nav>
+            <p> <b>follow me on:</b></p>
+            <a href="https://www.youtube.com/channel/UC-h9ASSx9AltgipwVmTHnyw" class="fa fa-youtube"> </a>
+            <a href="https://www.facebook.com/profile.php?id=100008137267881" class="fa fa-facebook">  </a>
+            <a href="https://github.com/sameerjoshii" class="fa fa-github"> </a>
+        </nav>
     </div>
    
 
 </body>
 <script>
-    fetch("https://api.github.com/users/sameerjoshii")
-    .then(Response => Response.json())
-    .then(function(data){
-    console.log(data)
-    // document.getElementById("MyProjects").innerHTML =  data['public_repos']
-    document.getElementById("githublink").href = data['html_url']
+    // fetch("https://api.github.com/users/sameerjoshii")
+    // .then(Response => Response.json())
+    // .then(function(data){
+    // console.log(data)
+    // // document.getElementById("MyProjects").innerHTML =  data['public_repos']
+    // document.getElementById("githublink").href = data['html_url']
 
-    })
+    // })
 
-    fetch("https://api.github.com/users/sameerjoshii/repos")
-.then(response => response.json())
+//     fetch("https://api.github.com/users/sameerjoshii/repos")
+// .then(response => response.json())
+// .then(function(data){
+// data.forEach(element => {
+// const repoEl = document.createElement('li')
+// repoEl.innerHTML = `
+// <span>${element.name}</span> Repository date:${element.updated_at}
+// `
+// document.getElementById('MyProjects').appendChild(repoEl)
+// });
+// })
+
+fetch("https://api.github.com/users/sameerjoshii/repos")
+.then(response =>response.json())
 .then(function(data){
-data.forEach(element => {
-const repoEl = document.createElement('li')
-repoEl.innerHTML = `
-<span>${element.name}</span> Repository date:${element.updated_at}
-`
-document.getElementById('MyProjects').appendChild(repoEl)
-});
+console.log(data)
+let m = data.length;
+var n = parseInt(m);
+let repoName = "";
+for(i = 0;i < n; i++ )
+{
+repoName += " Repo " + i +" "+ data[i]['name'] +"<br>"+ "<br>";
+}
+document.getElementById('MyProjects').innerHTML = repoName
 })
+
 
 </script>
 </html>
